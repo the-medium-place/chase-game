@@ -4,11 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+    <title>Chase!</title>
 </head>
 
 <body>
-
+    <div class="image-sources">
+        <img src="assets/images/smiley_sunglasses.png" height="10px" width="10px" alt="Smiley face with sunglasses"
+            id="smiley-sunglasses">
+        <img src="assets/images/devil.png" alt="Smiley devil face" height="10px" width="10px" id="smiley-devil">
+    </div>
+    <div class="title">
+        <h1>CHASE!</h1>
+    </div>
+    <div class="buttons">
+        <button class="start-btn">
+            START
+        </button>
+    </div>
+    <div class="game-wrapper">
+        <div class="player-stats-wrapper" style="display:none;">
+            <p class="name"></p>
+            <ul class="stats"></ul>
+        </div>
+        <canvas id="game-canvas"></canvas>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="assets/js/index.js"></script>
 </body>
 
