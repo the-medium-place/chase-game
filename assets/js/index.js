@@ -247,8 +247,9 @@ function createEnemies(player) {
     for (let i = 0; i < amt; i++) {
         let randomCoords = JSON.stringify(_getRandomValues());
 
+        // ensure no enemies spawn on same point or on player position
         while (enemyPositions.includes(randomCoords) || randomCoords == JSON.stringify(player.position)) {
-            randomCoords = JSON.stringify(_getRandomValues);
+            randomCoords = JSON.stringify(_getRandomValues());
         }
 
         enemyPositions.push(randomCoords);
@@ -274,11 +275,9 @@ function createEnemies(player) {
     }
 }
 
-function startGame(newGame = true) {
-    if (newGame) {
-
-    }
+function startGame() {
     $('.buttons').hide();
+    $('.instructions').hide();
     let playerName = '';
     while (!playerName.length) {
         playerName = prompt('Enter your name:');
@@ -287,12 +286,13 @@ function startGame(newGame = true) {
     $('p.name').text(`Welcome, ${newPlayer.stats.name}!`);
     _buildStatsDisplay();
     newPlayer.setInitialPlayerPosition();
-    let allEnemies = createEnemies(newPlayer);
 
+    let allEnemies = createEnemies(newPlayer);
     newPlayer.setEnemies(allEnemies);
 
     $('.game-wrapper').css({ position: 'fixed', top: '15%', right: '5%' });
-    $('body').css({ overflowY: 'hidden' })
+    $('body').css({ overflowY: 'hidden', overflowX: 'hidden' });
+    $('.mobile-buttons').show();
 
     $(document).keydown(e => {
         const { key } = e;
@@ -314,7 +314,7 @@ function startGame(newGame = true) {
             text: newPlayer.stats.best,
             id: 'best-text'
         })
-        const bestLi = $('<li>', {})
+        const bestLi = $('<li>', { class: 'stats-item' })
         bestLi.append(bestLabel).append(bestText);
 
         const levelLabel = $('<span>', {
@@ -325,7 +325,7 @@ function startGame(newGame = true) {
             text: newPlayer.stats.level,
             id: 'level-text'
         })
-        const levelLi = $('<li>', {})
+        const levelLi = $('<li>', { class: 'stats-item' })
         levelLi.append(levelLabel).append(levelText);
 
         $('ul.stats').append(levelLi).append(bestLi);
