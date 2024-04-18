@@ -299,9 +299,11 @@ function startGame() {
         moveLogic(key, newPlayer);
     })
 
-    $('.arrow-button').click(function () {
+    $('.arrow-button').on('click touchmove', function () {
         const key = $(this).attr('id');
-        moveLogic(key, newPlayer);
+        if (['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft'].includes(key)) {
+            moveLogic(key, newPlayer);
+        }
     })
 
     function _buildStatsDisplay() {
