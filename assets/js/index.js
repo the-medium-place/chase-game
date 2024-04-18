@@ -81,7 +81,7 @@ function startGame() {
         $('.game-wrapper').css({ position: 'fixed', top: '15%', right: '5%' });
         $('body').css({ overflowY: 'hidden', overflowX: 'hidden' });
         $('.mobile-buttons').show();
-        $('p.name').text(`Welcome, ${newPlayer.stats.name}!`);
+        // $('p.name').text(`Welcome, ${newPlayer.stats.name}!`);
         primeCanvas();
         _buildStatsDisplay();
     }
