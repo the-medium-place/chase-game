@@ -25,9 +25,34 @@
     <div class="game-wrapper">
         <div class="player-stats-wrapper" style="display:none;">
             <p class="name"></p>
-            <ul class="stats"></ul>
+            <div class="stats-flex-container">
+                <div class="stats-left">
+                    <ul class="stats"></ul>
+                </div>
+                <div class="stats-right">
+                    <p>
+                        Use the arrow keys (&uarr;, &darr;, &larr;, &rarr;) to move your character! But, be careful as
+                        the
+                        enemies will advance toward your position with each movement!
+                        <br>
+                        If enemies come into contact with each other, they die! If they catch you, you lose! Defeat all
+                        enemies to advance a level!
+                    </p>
+                </div>
+            </div>
         </div>
         <canvas id="game-canvas"></canvas>
+    </div>
+
+    <div class="mobile-buttons">
+        <div class="mobile-button-row">
+            <div class="arrow-button" id="ArrowUp">&uarr;</div>
+        </div>
+        <div class="mobile-button-row">
+            <div class="arrow-button" id="ArrowLeft">&larr;</div>
+            <div class="arrow-button" id="ArrowDown">&darr;</div>
+            <div class="arrow-button" id="ArrowRight">&rarr;</div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

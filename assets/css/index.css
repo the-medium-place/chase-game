@@ -11,6 +11,11 @@ body {
     width: 100%;
 }
 
+.title>h1 {
+    font-size: 250%;
+    margin: 0;
+}
+
 .buttons {
     text-align: center;
     margin-bottom: 30px;
@@ -30,11 +35,29 @@ body {
     height: 15%;
     border-bottom: 3px dotted black;
     background: khaki;
+    text-align: center;
+}
+
+.stats-flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats-left {
+    width: 15%;
+}
+
+.stats-right {
+    width: 80%;
 }
 
 .player-stats-wrapper>p, .player-stats-wrapper>ul {
     margin: 0;
     padding: 5px;
+}
+
+.player-stats-wrapper>.name {
+    font-size: 120%;
 }
 
 .start-btn {
@@ -52,13 +75,56 @@ body {
 #game-canvas {
     width: 100%;
     height: 85%;
-    /* background: green; */
 }
 
 .image-sources {
     display: none;
 }
 
+.mobile-buttons {
+    display: none;
+}
+
 ul.stats {
     list-style-type: none;
 }
+
+@media screen and (max-width: 900px) {
+    .stats-right, .stats-left {
+        display: none;
+    }
+
+    .mobile-buttons {
+        display: block;
+        position: absolute;
+        bottom: 15vh;
+        right: 10vw;
+        width: 80vw;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+
+    .mobile-button-row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .arrow-button {
+        width: 3rem;
+        height: 3rem;
+        background: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 5px;
+        box-shadow: inset 15px 0px .8rem rgba(50, 50, 50, .5), inset -15px 0px .8rem rgba(50, 50, 50, .5);
+    }
+
+    .game-wrapper {
+        height: 40vh;
+    }
+}
+
+@media screen and (max-width: 1200px) {}
+
+@media screen and (max-width: 900px) {}

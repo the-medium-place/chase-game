@@ -1,5 +1,3 @@
-console.log('linked');
-
 class Player {
     constructor(name, level, coordX, coordY) {
         this.name = name;
@@ -123,7 +121,6 @@ class Player {
                 // check if enemy icon is inside 'PersonalBubble' range
                 const xOutsidePersonalBubble = enemyX <= enemyObjX - personalBubble || enemyX >= enemyObjX + personalBubble
                 const yOutsidePersonalBubble = enemyY <= enemyObjY - personalBubble || enemyY >= enemyObjY + personalBubble
-                console.log({ xOutsidePersonalBubble, yOutsidePersonalBubble, diffIdx: i != ii })
 
                 return (!xOutsidePersonalBubble) && (!yOutsidePersonalBubble) && (i != ii) && enemy.isAlive && enemyObj.isAlive;
             })
@@ -256,7 +253,6 @@ function createEnemies(player) {
 
         enemyPositions.push(randomCoords);
     }
-    console.log({ enemyPositions });
     enemyPositions.forEach(positionStr => {
         const { x, y } = JSON.parse(positionStr);
 
@@ -288,7 +284,7 @@ function startGame(newGame = true) {
         playerName = prompt('Enter your name:');
     }
     const newPlayer = new Player(playerName, 1, 0, 0);
-    $('p.name').text(newPlayer.stats.name);
+    $('p.name').text(`Welcome, ${newPlayer.stats.name}!`);
     _buildStatsDisplay();
     newPlayer.setInitialPlayerPosition();
     let allEnemies = createEnemies(newPlayer);
@@ -300,6 +296,11 @@ function startGame(newGame = true) {
 
     $(document).keydown(e => {
         const { key } = e;
+        moveLogic(key, newPlayer);
+    })
+
+    $('.arrow-button').click(function () {
+        const key = $(this).attr('id');
         moveLogic(key, newPlayer);
     })
 
@@ -327,33 +328,24 @@ function startGame(newGame = true) {
         const levelLi = $('<li>', {})
         levelLi.append(levelLabel).append(levelText);
 
-        $('ul.stats').append(bestLi).append(levelLi);
+        $('ul.stats').append(levelLi).append(bestLi);
         $('.player-stats-wrapper').show(600);
     }
-
-    console.log({
-        level: newPlayer.stats.level,
-        name: newPlayer.stats.name,
-    })
 }
 
 function moveLogic(key, newPlayer) {
     clearCanvas();
     switch (key) {
         case 'ArrowDown':
-            console.log('down');
             newPlayer.moveY('down');
             break;
         case 'ArrowUp':
-            console.log('up');
             newPlayer.moveY('up');
             break;
         case 'ArrowLeft':
-            console.log('left');
             newPlayer.moveX('left');
             break;
         case 'ArrowRight':
-            console.log('right');
             newPlayer.moveX('right');
             break;
         default:
