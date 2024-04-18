@@ -72,8 +72,11 @@ class Enemy {
             }
         }
 
+        const personalBubble = 5;
+        const xOutsidePersonalBubble = this.coordX <= playerX - personalBubble || this.coordX >= playerX + personalBubble
+        const yOutsidePersonalBubble = this.coordY <= playerY - personalBubble || this.coordY >= playerY + personalBubble
 
-        if (this.coordX == playerX && this.coordY == playerY) {
+        if (!xOutsidePersonalBubble && !yOutsidePersonalBubble) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             this.setEnemyPosition();
             // alert('You\'ve been caught!');
@@ -87,7 +90,7 @@ class Enemy {
                     $('#caught-alert').hide('fade', function () {
                         window.location.reload();
                     });
-                }, 3000);
+                }, 2000);
             });
 
         }
